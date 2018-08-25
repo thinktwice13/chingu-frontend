@@ -2,18 +2,31 @@
 
 .github-activity-container {
     background-color: $palest-grey;
-    @include newsfeed-card;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 20px;
+    text-transform: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .github-activity-icon {
-    @include newsfeed-card--icon;
+    width: 40px;
+    height: 40px;
+    grid-column: 1 / 2;
+    margin: 0 auto;
+    align-self: center;
 }
 .github-activity-text {
-    @include newsfeed-card--text-container;
+    grid-column: 2 / -1;
 }
 
 .github-activity-title, 
 .github-activity-subtitle {
-    @include newsfeed-card-text;
+    font-size: 14px;
+    line-height: 28px;
 }
 
 .github-activity-title {
