@@ -6,7 +6,8 @@ import GithubLoginModal from "../Login/components/GithubLoginModal"
 import profileQuery from "../UserProfile/graphql/profileQuery"
 import voyagesQuery from "../VoyagePortal/graphql/voyagesQuery"
 import userBaseQuery from "./userBaseQuery"
-import { client } from "../../index"
+import { userClient, client } from "../../index"
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -59,6 +60,7 @@ class Header extends React.Component {
     
     this.props.history.replace("/")
     await client.resetStore()
+    await userClient.resetStore()
   };
 
   renderPortalDropDown = teams => {
@@ -166,6 +168,7 @@ export default withRouter(props => (
     : <Request
         component={Header}
         query={userBaseQuery}
+        options={{client: userClient}}
         {...props} />
       )
 )

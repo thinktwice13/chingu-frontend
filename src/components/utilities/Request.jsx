@@ -21,9 +21,11 @@ import toggleGlobalLoader from "./toggleGlobalLoader"
  */
 
 const Request = ({ component: Component, query, variables, options, globalLoader, ...props }) => (
-  <Query query={query} variables={variables}>
+  <Query query={query} variables={variables} {...options}>
     {
-      ({ loading, error, data }) => {
+      result => {
+        const { loading, error, data } = result
+        console.log({ result })
         if (error) return <Error error={error.message} /> // TODO: Pass goBack prop
         globalLoader && toggleGlobalLoader(loading)
         if (loading && globalLoader) return null

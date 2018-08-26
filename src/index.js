@@ -9,10 +9,38 @@ import ScrollToTop from "./ScrollToTop";
 import "./styles/fontawesome/webfonts/fontawesome-all.css";
 import "./styles/main.css";
 import registerServiceWorker from "./registerServiceWorker";
+import { InMemoryCache } from 'apollo-boost';
+import { persistCache } from 'apollo-cache-persist';
+
+const userCache = new InMemoryCache();
+const cache = new InMemoryCache();
+
+persistCache({
+  cache: userCache,
+  storage: localStorage,
+});
+
 
 const mode = 'dev66666666666'
+const userClient = new ApolloClient({
+  cache: userCache,
+  // The URL for your graphql server
+  uri: mode === 'dev' ? 'http://localhost:8008/graphql' : 'https://api.chingu.io/graphql',
+  request: async operation => {
+    const token = localStorage.getItem('token')
+    // TODO check cache
+    console.log({previousState: client.cache.data.data})
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    }) 
+  }
+})
+
 // create a new Apollo Client Instance
 const client = new ApolloClient({
+  cache,
   // The URL for your graphql server
   uri: mode === 'dev' ? 'http://localhost:8008/graphql' : 'https://api.chingu.io/graphql',
   request: async operation => {
@@ -55,16 +83,18 @@ const client = new ApolloClient({
 })
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <BrowserRouter>
-      <ScrollToTop>
-        <App />
-      </ScrollToTop>
-    </BrowserRouter>
+  <ApolloProvider client={userClient}>
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
+      </BrowserRouter>
+    </ApolloProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );
 
 registerServiceWorker();
 
-export {client}
+export {userClient, client}
