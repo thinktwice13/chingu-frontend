@@ -36,7 +36,7 @@ class UserProfile extends React.Component {
   componentDidMount() {
     // Redirect  /profile/:currentUser back to /profile
     const { username, data, history } = this.props
-    if (username === data.currentUser.username) history.push("/profile")
+    if (username === data.currentUser.username) history.replace("/profile")
 
     this.updateState();
   }
