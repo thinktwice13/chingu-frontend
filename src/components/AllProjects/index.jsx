@@ -4,32 +4,23 @@ import Request from "../utilities/Request";
 import Project from './components/Project';
 import './AllProjects.css';
 
-class AllProjects extends React.Component {
-  state = {
-    projects: null
-  }
+const AllProjects = ({ data }) => {
+  const { projects } = data
+  const mockErrorProject = { ...projects[0], id: 999 }
+  const list = [mockErrorProject, ...projects]
 
-  componentDidMount() {
-    const { projects } = this.props.data;
-    this.setState({ projects })
-  }
-
-  renderProjects = () => {
-    const { projects } = this.state;
+  const renderProjects = projects => {
     return projects.map((project, idx) => {
-      return <Project project={ project} key={idx} />
+      return <Project project={project} key={idx} />
     })
   }
 
-  render() {
-    let { projects } = this.state;
-    return (
-      <div className="all-projects-container">
-        <div className="all-projects-title">All Projects</div>
-        <div className="all-projects">{projects && this.renderProjects()}</div>
-      </div>
-    )
-  }
+  return (
+    <div className="all-projects-container">
+      <div className="all-projects-title">All Projects</div>
+      <div className="all-projects">{projects && renderProjects(list)}</div>
+    </div>
+  )
 }
 
 export default props => (
