@@ -82,11 +82,11 @@ export default () => (
       <Private
         exact 
         path={rt.standup.path}
-        render={
-        ({ match: { params: { team_id } } }) => (
+        component={
+        props => (
           rt.standup.component({
-            team_id,
-            standupVersion: null
+            standupVersion: null,
+            ...props
           })
         )} />
       <Route 

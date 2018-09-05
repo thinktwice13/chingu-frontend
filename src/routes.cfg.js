@@ -69,7 +69,7 @@ const routes = {
     component: WeeklyCheckin,
   },
   standup: {
-    path: "/team/:id/standup",
+    path: "/team/:team_id/standup",
     component: TeamStandup,
   },
   staff: {
