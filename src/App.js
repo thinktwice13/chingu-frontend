@@ -60,11 +60,11 @@ export default () => (
         exact 
         path="/voyage/application/:voyage_id"
         render={
-          ({ match: { params: { voyage_id } } }) => (
+          props => (
             rt.application.component({
-              voyage_id,
               voyageVersion: null, // set custom 'voyage_application' version here
               newUserVersion: null,
+              ...props
             })
           )}/>
       <Private 
