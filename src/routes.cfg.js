@@ -12,9 +12,8 @@ import TeamStandup from "./components/TeamStandup";
 import Staff from "./components/Pages/Staff";
 import PrivacyPolicy from "./components/Pages/PrivacyPolicy";
 import FAQ from "./components/Pages/FAQ";
-import companyFAQ from "./static-api-elements/companyFAQ";
-import programFAQ from "./static-api-elements/programFAQ";
 import CurrentPrograms from "./components/Pages/CurrentPrograms";
+import Missing404Page from "./components/404/404";
 
 /**
  * TODO:
@@ -38,7 +37,7 @@ const routes = {
     component: Register,
   },
   userprofile: {
-    path: "/profile"
+    path: "/profile",
     component: UserProfile,
   },
   profile: {
@@ -55,7 +54,7 @@ const routes = {
   },
   showcase: {
     path: "/project/:id",
-    component: ProjectShowcase.
+    component: ProjectShowcase,
   },
   voyages: {
     path: "/voyage",
@@ -83,15 +82,19 @@ const routes = {
   },
   companyfaq: {
     path: "/companyfaq",
-    component: companyFAQ,
+    component: FAQ,
   },
   programfaq: {
     path: "/programfaq",
-    component: programFAQ,
+    component: FAQ,
   },
   programs: {
     path: "/current",
     component: CurrentPrograms,
+  },
+  notfound: {
+    path: "*",
+    component: Missing404Page
   }
 }
 
