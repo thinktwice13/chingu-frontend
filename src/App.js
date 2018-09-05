@@ -42,21 +42,16 @@ export default () => (
         exact 
         path={rt.register.path}
         render={
-          () => rt.register({version: null}) // set custom 'chingu_application' version here
+          props => rt.register({version: null, ...props}) // set custom 'chingu_application' version here
         }/>
       <Private 
         exact 
         path={rt.userprofile.path} 
-        // TODO: refactor - editable should not be here
-        render={() => 
-          rt.userprofile.component({ editable: true })} />
+        component={rt.userprofile.component} />
       <Route
         exact 
         path={rt.profile.path}
-        render={
-          ({ match: { params: { username } } }) => (
-            rt.profile.component({username, editable: false})
-          )}/>
+        component={rt.profile.component} />
       <Private 
         exact 
         path={rt.voyages.path} 

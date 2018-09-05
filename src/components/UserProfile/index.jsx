@@ -108,6 +108,7 @@ class UserProfile extends React.Component {
     )
   }
   render() {
+    console.log("Profile", this.props)
     let { user, currentTeams, pastTeams, pendingApproval, editable } = this.state;
     return (
       <div className="user-profile-background-color" >
@@ -138,20 +139,25 @@ class UserProfile extends React.Component {
 
 }
 
-export default props => (
-  <Request
-    {...props}
-    query={profileQuery}
-    variables={props.username && { username: props.username }}
-    component={UserProfile}
-    globalLoader
-  />)
+export default props => {
+  const variables = {
+    username: props.match.params.username
+  }
+  return (
+    <Request
+      {...props}
+      query={profileQuery}
+      variables={variables.username && variables}
+      component={UserProfile}
+      globalLoader
+    />)
+}
 
 
 // {
-//   pastTeams.length > 0
-//   && <section className="user-voyage">
-//     <div className="user-voyage-title">Past Voyages</div>
+  //   pastTeams.length > 0
+  //   && <section className="user-voyage">
+  //     <div className="user-voyage-title">Past Voyages</div>
 //     <div>
 //       {pastTeams.map((team, index) => {
 //         return (
