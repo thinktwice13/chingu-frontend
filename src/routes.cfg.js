@@ -53,7 +53,7 @@ const routes = {
     component: AllProjects,
   },
   showcase: {
-    path: "/project/:id",
+    path: "/project/:project_id",
     component: ProjectShowcase,
   },
   voyages: {

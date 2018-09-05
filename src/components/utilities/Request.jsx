@@ -28,7 +28,10 @@ const Request = ({
   query,
   options,
   globalLoader,
-  ...props, // Moved here because wrapped component were receiving all the props including themselves. They can only possibly need variables
+  /**
+   * Moved ...props here to prevent wrapped component receiving themselves along wit other unnecessary props (query, options, loader)
+   */
+  ...props,
   variables,
 }) => (
     <Query query={query} variables={variables} {...options}>

@@ -118,9 +118,7 @@ export default () => (
       <Route 
         exact 
         path={rt.showcase.path}
-        render={
-        ({ match: { params: { projectId } } }) => 
-        rt.showcase.component({ projectId })} />
+        component={rt.showcase.component} />
       <Route 
         exact 
         path={rt.notfound.path}
