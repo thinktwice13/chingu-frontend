@@ -58,7 +58,7 @@ export default () => (
         component={rt.voyages.component} />
       <Private
         exact 
-        path="/voyage/application/:voyage_id"
+        path={rt.application.path}
         render={
           props => (
             rt.application.component({
@@ -82,7 +82,7 @@ export default () => (
       <Private
         exact 
         path={rt.standup.path}
-        component={
+        render={
         props => (
           rt.standup.component({
             standupVersion: null,

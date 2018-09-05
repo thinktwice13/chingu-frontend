@@ -61,7 +61,7 @@ const routes = {
     component: VoyagePortal,
   },
   application: {
-    path: "/voyage/application/:id",
+    path: "/voyage/application/:voyage_id",
     component: VoyageApplication,
   },
   checkin: {

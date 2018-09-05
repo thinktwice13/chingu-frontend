@@ -34,7 +34,6 @@ const VoyageApplicationContainer = ({
   match: { params: { voyage_id } },
   data: { user: { status } }
 }) => {
-  console.log({ voyage_id })
   switch (status) {
     case 'voyage_ready':
       return (
