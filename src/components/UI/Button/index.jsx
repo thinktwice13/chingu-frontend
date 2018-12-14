@@ -2,12 +2,32 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { colors, borders, effects } from 'components/UI/styles/variables';
 
 const { node, oneOf, bool } = PropTypes;
 
+const StyledButton = styled.button`
+  width: 150px;
+  font-size: 14px;
+  background-color: ${colors.theme_green};
+  color: white;
+  text-transform: uppercase;
+  border-radius: ${borders.button_border_radius_rounded};
+  padding: 10px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  border: none;
+  display: block;
+  box-shadow: ${effects.box_shadow};
+  &:hover {
+    background-color: ${colors.theme_green__hover};
+  }
+`;
+
 const Button = props => {
   const { children, ...restProps } = props;
-  return <button {...restProps}>{children}</button>;
+  return <StyledButton {...restProps}>{children}</StyledButton>;
 };
 
 Button.propTypes = {
@@ -20,8 +40,8 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button',
-  rounded: false,
-  inverted: false,
+  rounded: undefined,
+  inverted: undefined,
   size: 'regular',
 };
 
