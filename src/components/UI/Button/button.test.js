@@ -13,6 +13,18 @@ describe('Button', () => {
 
     btn.setProps({ type: 'submit' });
     expect(toJSON(btn)).toMatchSnapshot();
+
+    btn.setProps({ rounded: true });
+    expect(toJSON(btn)).toMatchSnapshot();
+
+    btn.setProps({ inverted: true });
+    expect(toJSON(btn)).toMatchSnapshot();
+
+    btn.setProps({ size: 'small' });
+    expect(toJSON(btn)).toMatchSnapshot();
+
+    btn.setProps({ small: 'large' });
+    expect(toJSON(btn)).toMatchSnapshot();
   });
 });
 

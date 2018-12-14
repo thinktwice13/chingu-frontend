@@ -2,6 +2,54 @@
 
 exports[`Button renders with correct props 1`] = `
 <button
+  inverted={false}
+  rounded={false}
+  size="regular"
+  type="submit"
+>
+  Click me
+</button>
+`;
+
+exports[`Button renders with correct props 2`] = `
+<button
+  inverted={false}
+  rounded={true}
+  size="regular"
+  type="submit"
+>
+  Click me
+</button>
+`;
+
+exports[`Button renders with correct props 3`] = `
+<button
+  inverted={true}
+  rounded={true}
+  size="regular"
+  type="submit"
+>
+  Click me
+</button>
+`;
+
+exports[`Button renders with correct props 4`] = `
+<button
+  inverted={true}
+  rounded={true}
+  size="small"
+  type="submit"
+>
+  Click me
+</button>
+`;
+
+exports[`Button renders with correct props 5`] = `
+<button
+  inverted={true}
+  rounded={true}
+  size="small"
+  small="large"
   type="submit"
 >
   Click me

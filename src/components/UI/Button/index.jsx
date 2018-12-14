@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const { node, oneOf } = PropTypes;
+const { node, oneOf, bool } = PropTypes;
 
 const Button = props => {
   const { children, ...restProps } = props;
@@ -13,10 +13,16 @@ const Button = props => {
 Button.propTypes = {
   children: node.isRequired,
   type: oneOf(['button', 'submit', 'reset']),
+  rounded: bool,
+  inverted: bool,
+  size: oneOf(['small', 'regular', 'large']),
 };
 
 Button.defaultProps = {
   type: 'button',
+  rounded: false,
+  inverted: false,
+  size: 'regular',
 };
 
 export default Button;
