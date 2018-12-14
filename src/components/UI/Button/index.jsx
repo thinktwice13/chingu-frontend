@@ -1,11 +1,22 @@
+/* eslint-disable  react/button-has-type */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Buttton = props => {
-  const { children } = props;
-  return <button>{children}</button>;
+const { node, oneOf } = PropTypes;
+
+const Button = props => {
+  const { children, ...restProps } = props;
+  return <button {...restProps}>{children}</button>;
 };
 
-Buttton.propTypes = {};
+Button.propTypes = {
+  children: node.isRequired,
+  type: oneOf(['button', 'submit', 'reset']),
+};
 
-export default Buttton;
+Button.defaultProps = {
+  type: 'button',
+};
+
+export default Button;

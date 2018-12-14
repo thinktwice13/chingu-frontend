@@ -1,9 +1,20 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import toJSON from 'enzyme-to-json'; // Needed to exclude enzyme wrapper from saved snapshots
 import Button from '.';
 
 Enzyme.configure({ adapter: new Adapter() });
+
+describe('Button', () => {
+  it('renders with correct props', () => {
+    const btn = shallow(<Button>Click me</Button>);
+    expect(btn.text()).toEqual('Click me');
+
+    btn.setProps({ type: 'submit' });
+    expect(toJSON(btn)).toMatchSnapshot();
+  });
+});
 
 // describe('Button', () => {
 //   it('render button with correct props', () => {

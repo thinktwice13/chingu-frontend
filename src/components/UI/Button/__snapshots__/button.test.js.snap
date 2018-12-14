@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders with correct props 1`] = `
+<button
+  type="submit"
+>
+  Click me
+</button>
+`;
