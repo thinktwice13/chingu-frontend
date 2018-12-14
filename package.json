@@ -26,9 +26,12 @@
     "react-select": "^2.1.0",
     "redux": "^3.7.2",
     "redux-form": "^7.2.3",
+    "styled-components": "^4.1.2",
     "validator": "^10.7.0"
   },
   "devDependencies": {
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
