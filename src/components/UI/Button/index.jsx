@@ -10,18 +10,19 @@ const { node, oneOf, bool } = PropTypes;
 const StyledButton = styled.button`
   width: 150px;
   font-size: 14px;
-  background-color: ${colors.theme_green};
-  color: white;
+  background-color: ${({ inverted }) => (inverted ? '#00000000' : colors.theme_green)};
+  color: ${({ inverted }) => (inverted ? colors.theme_green : 'white')};
   text-transform: uppercase;
-  border-radius: ${borders.button_border_radius_rounded};
+  border-radius: ${({ rounded }) =>
+    rounded ? borders.button_border_radius_rounded : borders.button_border_radius};
   padding: 10px;
   letter-spacing: 0.1em;
   text-align: center;
-  border: none;
+  border: ${({ inverted }) => (inverted ? `2px solid${colors.theme_green}` : 'none')};
   display: block;
   box-shadow: ${effects.box_shadow};
-  &:hover {
-    background-color: ${colors.theme_green__hover};
+  :hover {
+    background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.theme_green__hover)};
   }
 `;
 
