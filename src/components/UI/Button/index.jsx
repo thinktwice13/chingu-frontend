@@ -2,10 +2,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { colors, borders, effects } from 'components/UI/styles/variables';
+import styled, { css } from 'styled-components';
+import { colors, borders, effects } from '../styles/variables';
 
 const { node, oneOf, bool } = PropTypes;
+
+const disabledStyles = css`
+  background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.light_grey)};
+  :hover {
+    background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.light_grey)};
+  }
+`;
 
 const StyledButton = styled.button`
   width: 150px;
@@ -24,6 +31,7 @@ const StyledButton = styled.button`
   :hover {
     background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.theme_green__hover)};
   }
+  ${({ disabled }) => (disabled ? disabledStyles : '')}
 `;
 
 const Button = props => {
@@ -34,16 +42,18 @@ const Button = props => {
 Button.propTypes = {
   children: node.isRequired,
   type: oneOf(['button', 'submit', 'reset']),
+  size: oneOf(['small', 'regular', 'large']),
   rounded: bool,
   inverted: bool,
-  size: oneOf(['small', 'regular', 'large']),
+  disabled: bool,
 };
 
 Button.defaultProps = {
   type: 'button',
+  size: 'regular',
   rounded: undefined,
   inverted: undefined,
-  size: 'regular',
+  disabled: undefined,
 };
 
 export default Button;
