@@ -1,7 +1,8 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import toJSON from 'enzyme-to-json'; // Needed to exclude enzyme wrapper from saved snapshots
+import 'jest-styled-components';
+import { colors, borders } from '../styles/variables';
 import Button from '.';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -12,19 +13,37 @@ describe('Button', () => {
     expect(btn.text()).toEqual('Click me');
 
     btn.setProps({ type: 'submit' });
-    expect(toJSON(btn)).toMatchSnapshot();
+    expect(btn).toMatchSnapshot();
 
     btn.setProps({ rounded: true });
-    expect(toJSON(btn)).toMatchSnapshot();
+    expect(btn).toMatchSnapshot();
 
     btn.setProps({ inverted: true });
-    expect(toJSON(btn)).toMatchSnapshot();
+    expect(btn).toMatchSnapshot();
 
     btn.setProps({ size: 'small' });
-    expect(toJSON(btn)).toMatchSnapshot();
+    expect(btn).toMatchSnapshot();
 
-    btn.setProps({ small: 'large' });
-    expect(toJSON(btn)).toMatchSnapshot();
+    btn.setProps({ size: 'large' });
+    expect(btn).toMatchSnapshot();
+
+    btn.setProps({ disabled: true });
+    expect(btn).toMatchSnapshot();
+  });
+
+  it('renders with correct styles', () => {
+    const btn = mount(<Button>CLick me</Button>);
+
+    expect(btn).not.toHaveStyleRule('border-radius', borders.button_border_radius_rounded);
+
+    btn.setProps({ rounded: true });
+    expect(btn).toHaveStyleRule('border-radius', borders.button_border_radius_rounded);
+
+    btn.setProps({ disabled: true });
+    expect(btn).toHaveStyleRule('background-color', colors.light_grey);
+
+    btn.setProps({ disabled: false, inverted: true });
+    expect(btn).toHaveStyleRule('color', colors.theme_green);
   });
 });
 

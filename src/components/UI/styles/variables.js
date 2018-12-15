@@ -2,6 +2,8 @@ export const colors = {
   theme_green: '#15cf89',
   theme_green__hover: 'rgb(25, 194, 129)',
   light_grey: '#e6e6e6',
+  lighter_grey: '#D9D9D9',
+  
 };
 
 export const borders = {

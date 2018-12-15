@@ -1,57 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button renders with correct props 1`] = `
-<button
-  inverted={false}
-  rounded={false}
+<styled.button
   size="regular"
   type="submit"
 >
   Click me
-</button>
+</styled.button>
 `;
 
 exports[`Button renders with correct props 2`] = `
-<button
-  inverted={false}
+<styled.button
   rounded={true}
   size="regular"
   type="submit"
 >
   Click me
-</button>
+</styled.button>
 `;
 
 exports[`Button renders with correct props 3`] = `
-<button
+<styled.button
   inverted={true}
   rounded={true}
   size="regular"
   type="submit"
 >
   Click me
-</button>
+</styled.button>
 `;
 
 exports[`Button renders with correct props 4`] = `
-<button
+<styled.button
   inverted={true}
   rounded={true}
   size="small"
   type="submit"
 >
   Click me
-</button>
+</styled.button>
 `;
 
 exports[`Button renders with correct props 5`] = `
-<button
+<styled.button
   inverted={true}
   rounded={true}
-  size="small"
-  small="large"
+  size="large"
   type="submit"
 >
   Click me
-</button>
+</styled.button>
+`;
+
+exports[`Button renders with correct props 6`] = `
+<styled.button
+  disabled={true}
+  inverted={true}
+  rounded={true}
+  size="large"
+  type="submit"
+>
+  Click me
+</styled.button>
 `;
