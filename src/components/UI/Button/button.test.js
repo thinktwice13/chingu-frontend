@@ -44,6 +44,12 @@ describe('Button', () => {
 
     btn.setProps({ disabled: false, inverted: true });
     expect(btn).toHaveStyleRule('color', colors.theme_green);
+
+    btn.setProps({ size: 'small' });
+    expect(btn).toHaveStyleRule('padding', '5px');
+
+    btn.setProps({ size: 'large' });
+    expect(btn).toHaveStyleRule('font-size', '18px');
   });
 
   it('calls event listeners correctly', () => {

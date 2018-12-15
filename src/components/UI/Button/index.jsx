@@ -14,15 +14,36 @@ const disabledStyles = css`
   }
 `;
 
+const getSize = ({ size }) => {
+  switch (size) {
+    case 'large':
+      return css`
+        font-size: 18px;
+        padding: 12px;
+        widows: 200px;
+      `;
+    case 'small':
+      return css`
+        font-size: 10px;
+        padding: 5px;
+        widows: 80px;
+      `;
+    default:
+      return css`
+        font-size: 14px;
+        padding: 10px;
+        widows: 150px;
+      `;
+  }
+};
+
 const StyledButton = styled.button`
-  width: 150px;
-  font-size: 14px;
+  ${getSize}
   background-color: ${({ inverted }) => (inverted ? '#00000000' : colors.theme_green)};
   color: ${({ inverted }) => (inverted ? colors.theme_green : 'white')};
   text-transform: uppercase;
   border-radius: ${({ rounded }) =>
     rounded ? borders.button_border_radius_rounded : borders.button_border_radius};
-  padding: 10px;
   letter-spacing: 0.1em;
   text-align: center;
   border: ${({ inverted }) => (inverted ? `2px solid${colors.theme_green}` : 'none')};
