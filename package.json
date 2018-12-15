@@ -52,7 +52,7 @@
     "local": "cross-env REACT_APP_API=local npm run start",
     "build-js": "react-scripts build",
     "build": "cross-env  NODE_PATH=src npm-run-all build-css build-fragments build-js; echo \"/* /index.html 200\" > build/_redirects",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --modulePaths=src",
     "eject": "react-scripts eject",
     "build-fragments": "node ./build_fragments.js"
   },
