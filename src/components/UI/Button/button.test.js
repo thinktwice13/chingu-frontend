@@ -45,48 +45,19 @@ describe('Button', () => {
     btn.setProps({ disabled: false, inverted: true });
     expect(btn).toHaveStyleRule('color', colors.theme_green);
   });
+
+  it('calls event listeners correctly', () => {
+    const btn = shallow(<Button>Click me</Button>);
+
+    const onClick = jest.fn();
+    btn.setProps({ onClick });
+
+    // Simulate button click
+    btn.simulate('click');
+    expect(onClick).toBeCalledTimes(1);
+
+    // Alternative way to call event listener prop
+    btn.prop('onClick')();
+    expect(onClick).toBeCalledTimes(2);
+  });
 });
-
-// describe('Button', () => {
-//   it('render button with correct props', () => {
-//     const btn = shallow(<Button>Click me</Button>);
-//     expect(btn).toMatchSnapshot();
-
-//     btn.setProps({ disabled: true });
-//     expect(btn.render()).toMatchSnapshot();
-
-//     btn.setProps({ inverted: true });
-//     expect(btn.render()).toMatchSnapshot();
-
-//     btn.setProps({ size: 'small' });
-//     expect(btn.render()).toMatchSnapshot();
-
-//     btn.setProps({ size: 'large' });
-//     expect(btn.render()).toMatchSnapshot();
-
-//     btn.setProps({ rounded: true });
-//     expect(btn.render()).toMatchSnapshot();
-
-//     btn.setProps({ style: { backgroundColor: 'orange' } });
-//     expect(btn.render()).toMatchSnapshot();
-//   });
-
-//   it('renders as anchor tag with href prop', () => {
-//     const btn = shallow(<Button href='http://www.chingu.io'>Click me</Button>);
-//     expect(btn.find('a').exists()).toBe(true);
-//     expect(btn.find('button').exists()).toBe(false);
-//   });
-
-//   it('calls event listeners', () => {
-//     const click = jest.fn();
-
-//     const btn = shallow(<Button onClick={click}>Click me</Button>);
-
-//     btn.simulate('click');
-//     expect(click).toBeCalled();
-
-//     btn.simulate('click');
-//     btn.simulate('click');
-//     expect(click).toBeCalledTimes(3);
-//   });
-// });
