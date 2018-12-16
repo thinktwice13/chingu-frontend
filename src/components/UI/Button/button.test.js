@@ -2,10 +2,10 @@ import React from 'react';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-styled-components';
-import BrowserRouter from 'react-router-dom';
-import { colors, borders } from '../styles/variables';
+import { colors, borders } from 'components/UI/styles/variables';
+import media from 'components/UI/styles/mediaSizes';
+import themes from 'components/UI/styles/themes';
 import Button from '.';
-import themes from '../styles/themes';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -80,6 +80,14 @@ describe('Button', () => {
 
     btn.setProps({ theme: 'warning', inverted: true });
     expect(btn).toHaveStyleRule('color', themes.warning.bg);
+  });
+
+  it('applies media query style correctly', () => {
+    const btn = mount(<Button>CLick me</Button>);
+
+    expect(btn).toHaveStyleRule('width', '100%', {
+      media: `(max-width:${media.phone}px)`,
+    });
   });
 
   it('calls event listeners correctly', () => {

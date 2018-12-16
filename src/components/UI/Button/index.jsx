@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import themes from 'components/UI/styles/themes';
-import { colors, borders, effects } from '../styles/variables';
+import { colors, borders, effects } from 'components/UI/styles/variables';
+import media from 'components/UI/styles/mediaSizes';
 
 const { node, oneOf, oneOfType, bool, string, shape } = PropTypes;
 
@@ -50,6 +51,10 @@ const StyledButton = styled.div`
     background-color: ${({ theme }) => theme.hover};
   }
   ${({ disabled }) => (disabled ? disabledStyles : '')}
+
+  @media(max-width:${media.phone}px) {
+    width: 100%;
+  }
 `;
 
 /**
