@@ -10,6 +10,7 @@ exports[`Button renders as anchor tag link with href prop 1`] = `
   theme={
     Object {
       "bg": "#15cf89",
+      "borderStyle": "#15cf89",
       "fg": "white",
       "hover": "rgb(25, 194, 129)",
     }
@@ -27,6 +28,7 @@ exports[`Button renders as button by default 1`] = `
   theme={
     Object {
       "bg": "#15cf89",
+      "borderStyle": "#15cf89",
       "fg": "white",
       "hover": "rgb(25, 194, 129)",
     }
@@ -44,6 +46,7 @@ exports[`Button renders custom component if proviuded as prop 1`] = `
   theme={
     Object {
       "bg": "#15cf89",
+      "borderStyle": "#15cf89",
       "fg": "white",
       "hover": "rgb(25, 194, 129)",
     }
@@ -61,6 +64,7 @@ exports[`Button renders with correct props 1`] = `
   theme={
     Object {
       "bg": "#15cf89",
+      "borderStyle": "#15cf89",
       "fg": "white",
       "hover": "rgb(25, 194, 129)",
     }
@@ -79,6 +83,7 @@ exports[`Button renders with correct props 2`] = `
   theme={
     Object {
       "bg": "#15cf89",
+      "borderStyle": "#15cf89",
       "fg": "white",
       "hover": "rgb(25, 194, 129)",
     }
@@ -97,6 +102,7 @@ exports[`Button renders with correct props 3`] = `
   theme={
     Object {
       "bg": "white",
+      "borderStyle": "#15cf89",
       "fg": "#15cf89",
       "hover": "#15cf8911",
     }
@@ -115,6 +121,7 @@ exports[`Button renders with correct props 4`] = `
   theme={
     Object {
       "bg": "white",
+      "borderStyle": "#15cf89",
       "fg": "#15cf89",
       "hover": "#15cf8911",
     }
@@ -133,6 +140,7 @@ exports[`Button renders with correct props 5`] = `
   theme={
     Object {
       "bg": "white",
+      "borderStyle": "#15cf89",
       "fg": "#15cf89",
       "hover": "#15cf8911",
     }
@@ -152,6 +160,7 @@ exports[`Button renders with correct props 6`] = `
   theme={
     Object {
       "bg": "white",
+      "borderStyle": "#15cf89",
       "fg": "#15cf89",
       "hover": "#15cf8911",
     }

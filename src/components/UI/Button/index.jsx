@@ -11,7 +11,8 @@ import media from 'components/UI/styles/mediaSizes';
 const { node, oneOf, oneOfType, bool, string, shape, func, object } = PropTypes;
 
 const disabledStyles = css`
-  background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.light_grey)};
+  background-color: ${colors.light_grey};
+  border: 1px solid ${colors.light_grey};
   :hover {
     background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.light_grey)};
   }
@@ -20,18 +21,15 @@ const disabledStyles = css`
 const getSize = {
   regular: css`
     font-size: 14px;
-    padding: 10px;
-    width: 150px;
+    min-width: 150px;
   `,
   small: css`
     font-size: 10px;
-    padding: 5px;
-    width: 80px;
+    min-width: 80px;
   `,
   large: css`
     font-size: 18px;
-    padding: 12px;
-    width: 200px;
+    min-width: 200px;
   `,
 };
 
@@ -44,9 +42,13 @@ const StyledButton = styled.div`
     rounded ? borders.button_border_radius_rounded : borders.button_border_radius};
   letter-spacing: 0.1em;
   text-align: center;
-  border: 2px solid ${props => props.theme.fg};
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${props => props.theme.borderStyle};
   display: block;
   box-shadow: ${effects.box_shadow};
+  margin: 0.5em;
+  height: 3em;
   :hover {
     background-color: ${({ theme }) => theme.hover};
   }
@@ -65,6 +67,7 @@ const StyledButton = styled.div`
 const invertTheme = theme => ({
   fg: theme.bg,
   bg: theme.fg,
+  borderStyle: theme.bg,
   hover: `${theme.bg}11`, // Adds opacity (Assumes hex color code) TODO: FIXME
 });
 

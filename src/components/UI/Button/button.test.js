@@ -53,9 +53,6 @@ describe('Button', () => {
     btn.setProps({ disabled: false });
     expect(btn).toHaveStyleRule('color', 'white');
 
-    btn.setProps({ size: 'small' });
-    expect(btn).toHaveStyleRule('padding', '5px');
-
     btn.setProps({ size: 'large' });
     expect(btn).toHaveStyleRule('font-size', '18px');
 
