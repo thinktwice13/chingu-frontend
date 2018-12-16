@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, ThemeProvider } from 'styled-components';
+import styled, { css } from 'styled-components';
 import themes from 'components/UI/styles/themes';
 import { colors, borders, effects } from '../styles/variables';
 
@@ -42,7 +42,7 @@ const StyledButton = styled.button`
     rounded ? borders.button_border_radius_rounded : borders.button_border_radius};
   letter-spacing: 0.1em;
   text-align: center;
-  border: 'none';
+  border: 2px solid ${props => props.theme.fg};
   display: block;
   box-shadow: ${effects.box_shadow};
   :hover {
@@ -51,11 +51,30 @@ const StyledButton = styled.button`
   ${({ disabled }) => (disabled ? disabledStyles : '')}
 `;
 
+/**
+ * @description gets color theme from theme name and 'inverted' flag
+ * @param {string} theme must be on of [primary, secondary, error, warning, info]
+ * @param {bool} inverted
+ * @returns {Object} theme colors object {fg, bg, hover}
+ */
+const getTheme = (theme, inverted) => {
+  const t = themes[theme];
+  if (inverted) {
+    return {
+      fg: t.bg,
+      bg: t.fg,
+      hover: `${t.bg}11`, // Adds opacity (Assumes hex color code) TODO: FIXME
+    };
+  }
+  return t;
+};
+
 // ======= EXPORT ========= //
 const Button = props => {
-  const { children, theme, ...restProps } = props;
+  const { children, theme, inverted, ...restProps } = props;
+
   return (
-    <StyledButton theme={themes[theme]} {...restProps}>
+    <StyledButton theme={getTheme(theme, inverted)} {...restProps}>
       {children}
     </StyledButton>
   );
@@ -66,7 +85,7 @@ Button.propTypes = {
   type: oneOf(['button', 'submit', 'reset']),
   size: oneOf(['small', 'regular', 'large']),
   rounded: bool,
-  // inverted: bool,
+  inverted: bool,
   disabled: bool,
   theme: oneOf(['primary', 'secondary', 'info', 'error', 'warning']),
 };
@@ -75,7 +94,7 @@ Button.defaultProps = {
   type: 'button',
   size: 'regular',
   rounded: undefined,
-  // inverted: undefined,
+  inverted: undefined,
   disabled: undefined,
   theme: 'primary',
 };

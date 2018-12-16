@@ -3,7 +3,13 @@
 exports[`Button renders with correct props 1`] = `
 <styled.button
   size="regular"
-  theme="primary"
+  theme={
+    Object {
+      "bg": "#15cf89",
+      "fg": "white",
+      "hover": "rgb(25, 194, 129)",
+    }
+  }
   type="submit"
 >
   Click me
@@ -14,7 +20,13 @@ exports[`Button renders with correct props 2`] = `
 <styled.button
   rounded={true}
   size="regular"
-  theme="primary"
+  theme={
+    Object {
+      "bg": "#15cf89",
+      "fg": "white",
+      "hover": "rgb(25, 194, 129)",
+    }
+  }
   type="submit"
 >
   Click me
@@ -23,10 +35,15 @@ exports[`Button renders with correct props 2`] = `
 
 exports[`Button renders with correct props 3`] = `
 <styled.button
-  inverted={true}
   rounded={true}
   size="regular"
-  theme="primary"
+  theme={
+    Object {
+      "bg": "white",
+      "fg": "#15cf89",
+      "hover": "#15cf8911",
+    }
+  }
   type="submit"
 >
   Click me
@@ -35,10 +52,15 @@ exports[`Button renders with correct props 3`] = `
 
 exports[`Button renders with correct props 4`] = `
 <styled.button
-  inverted={true}
   rounded={true}
   size="small"
-  theme="primary"
+  theme={
+    Object {
+      "bg": "white",
+      "fg": "#15cf89",
+      "hover": "#15cf8911",
+    }
+  }
   type="submit"
 >
   Click me
@@ -47,10 +69,15 @@ exports[`Button renders with correct props 4`] = `
 
 exports[`Button renders with correct props 5`] = `
 <styled.button
-  inverted={true}
   rounded={true}
   size="large"
-  theme="primary"
+  theme={
+    Object {
+      "bg": "white",
+      "fg": "#15cf89",
+      "hover": "#15cf8911",
+    }
+  }
   type="submit"
 >
   Click me
@@ -60,10 +87,15 @@ exports[`Button renders with correct props 5`] = `
 exports[`Button renders with correct props 6`] = `
 <styled.button
   disabled={true}
-  inverted={true}
   rounded={true}
   size="large"
-  theme="primary"
+  theme={
+    Object {
+      "bg": "white",
+      "fg": "#15cf89",
+      "hover": "#15cf8911",
+    }
+  }
   type="submit"
 >
   Click me

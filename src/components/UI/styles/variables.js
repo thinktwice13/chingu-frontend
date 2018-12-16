@@ -50,10 +50,10 @@ export const colors = {
 };
 
 export const borders = {
-  button_border_radius: '2px',
+  button_border_radius: '5px',
   button_border_radius_rounded: '20px',
 };
 
 export const effects = {
-  box_shadow: `0px 3px 6px {colors.light_grey}`,
+  box_shadow: `0px 3px 6px ${colors.light_grey}`,
 };
