@@ -9,6 +9,13 @@ import themes from '../styles/themes';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Button', () => {
+  it('renders as button by default', () => {
+    const btn = shallow(<Button href='#'>Click</Button>);
+    expect(btn.render()[0].name).toEqual('a');
+  });
+
+  it('renders as anchor tag link with href prop', () => {});
+
   it('renders with correct props', () => {
     const btn = shallow(<Button>Click me</Button>);
     expect(btn.text()).toEqual('Click me');

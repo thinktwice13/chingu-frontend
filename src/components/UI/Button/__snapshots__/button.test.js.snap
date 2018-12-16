@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button renders with correct props 1`] = `
-<styled.button
+<styled.div
+  as="button"
   size="regular"
   theme={
     Object {
@@ -13,11 +14,12 @@ exports[`Button renders with correct props 1`] = `
   type="submit"
 >
   Click me
-</styled.button>
+</styled.div>
 `;
 
 exports[`Button renders with correct props 2`] = `
-<styled.button
+<styled.div
+  as="button"
   rounded={true}
   size="regular"
   theme={
@@ -30,11 +32,12 @@ exports[`Button renders with correct props 2`] = `
   type="submit"
 >
   Click me
-</styled.button>
+</styled.div>
 `;
 
 exports[`Button renders with correct props 3`] = `
-<styled.button
+<styled.div
+  as="button"
   rounded={true}
   size="regular"
   theme={
@@ -47,11 +50,12 @@ exports[`Button renders with correct props 3`] = `
   type="submit"
 >
   Click me
-</styled.button>
+</styled.div>
 `;
 
 exports[`Button renders with correct props 4`] = `
-<styled.button
+<styled.div
+  as="button"
   rounded={true}
   size="small"
   theme={
@@ -64,11 +68,12 @@ exports[`Button renders with correct props 4`] = `
   type="submit"
 >
   Click me
-</styled.button>
+</styled.div>
 `;
 
 exports[`Button renders with correct props 5`] = `
-<styled.button
+<styled.div
+  as="button"
   rounded={true}
   size="large"
   theme={
@@ -81,11 +86,12 @@ exports[`Button renders with correct props 5`] = `
   type="submit"
 >
   Click me
-</styled.button>
+</styled.div>
 `;
 
 exports[`Button renders with correct props 6`] = `
-<styled.button
+<styled.div
+  as="button"
   disabled={true}
   rounded={true}
   size="large"
@@ -99,5 +105,5 @@ exports[`Button renders with correct props 6`] = `
   type="submit"
 >
   Click me
-</styled.button>
+</styled.div>
 `;

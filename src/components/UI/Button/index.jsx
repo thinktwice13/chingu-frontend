@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import themes from 'components/UI/styles/themes';
 import { colors, borders, effects } from '../styles/variables';
 
-const { node, oneOf, bool } = PropTypes;
+const { node, oneOf, bool, string } = PropTypes;
 
 const disabledStyles = css`
   background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.light_grey)};
@@ -19,21 +19,21 @@ const getSize = {
   regular: css`
     font-size: 14px;
     padding: 10px;
-    widows: 150px;
+    width: 150px;
   `,
   small: css`
     font-size: 10px;
     padding: 5px;
-    widows: 80px;
+    width: 80px;
   `,
   large: css`
     font-size: 18px;
     padding: 12px;
-    widows: 200px;
+    width: 200px;
   `,
 };
 
-const StyledButton = styled.button`
+const StyledButton = styled.div`
   ${props => getSize[props.size]}
   color: ${({ theme }) => theme.fg};
   background-color: ${({ theme }) => theme.bg};
@@ -52,29 +52,36 @@ const StyledButton = styled.button`
 `;
 
 /**
- * @description gets color theme from theme name and 'inverted' flag
- * @param {string} theme must be on of [primary, secondary, error, warning, info]
- * @param {bool} inverted
- * @returns {Object} theme colors object {fg, bg, hover}
+ * @description inverts color theme
+ * @param {Object} theme
+ * @returns {Object} inverted theme with hover color based on foreground with low opacity //TODO: adjust
  */
-const getTheme = (theme, inverted) => {
-  const t = themes[theme];
-  if (inverted) {
-    return {
-      fg: t.bg,
-      bg: t.fg,
-      hover: `${t.bg}11`, // Adds opacity (Assumes hex color code) TODO: FIXME
-    };
-  }
-  return t;
-};
+const invertTheme = theme => ({
+  fg: theme.bg,
+  bg: theme.fg,
+  hover: `${theme.bg}11`, // Adds opacity (Assumes hex color code) TODO: FIXME
+});
 
 // ======= EXPORT ========= //
 const Button = props => {
-  const { children, theme, inverted, ...restProps } = props;
+  const { children, theme, inverted, href, ...restProps } = props;
+
+  // Get color theme
+  const t = inverted ? invertTheme(themes[theme]) : themes[theme];
+
+  // HTML tag to render
+  const htmlTag = href ? 'a' : 'button';
+
+  const anchorTagProps = !href
+    ? undefined
+    : {
+        href,
+        rel: 'noopener noreferrer',
+        target: '_blank',
+      };
 
   return (
-    <StyledButton theme={getTheme(theme, inverted)} {...restProps}>
+    <StyledButton theme={t} {...anchorTagProps} as={htmlTag} {...restProps}>
       {children}
     </StyledButton>
   );
@@ -84,19 +91,21 @@ Button.propTypes = {
   children: node.isRequired,
   type: oneOf(['button', 'submit', 'reset']),
   size: oneOf(['small', 'regular', 'large']),
+  theme: oneOf(['primary', 'secondary', 'info', 'error', 'warning']),
   rounded: bool,
   inverted: bool,
   disabled: bool,
-  theme: oneOf(['primary', 'secondary', 'info', 'error', 'warning']),
+  href: string,
 };
 
 Button.defaultProps = {
   type: 'button',
   size: 'regular',
+  theme: 'primary',
   rounded: undefined,
   inverted: undefined,
   disabled: undefined,
-  theme: 'primary',
+  href: undefined,
 };
 
 export default Button;
