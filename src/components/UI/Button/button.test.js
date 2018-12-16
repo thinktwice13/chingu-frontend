@@ -2,6 +2,7 @@ import React from 'react';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-styled-components';
+import BrowserRouter from 'react-router-dom';
 import { colors, borders } from '../styles/variables';
 import Button from '.';
 import themes from '../styles/themes';
@@ -10,11 +11,23 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Button', () => {
   it('renders as button by default', () => {
+    const btn = shallow(<Button>Click</Button>);
+    expect(btn.render()[0].name).toEqual('button');
+  });
+
+  it('renders as anchor tag link with href prop', () => {
     const btn = shallow(<Button href='#'>Click</Button>);
     expect(btn.render()[0].name).toEqual('a');
   });
 
-  it('renders as anchor tag link with href prop', () => {});
+  // it('renders as React-router Link if provided "to" prop', () => {
+  //   const btn = shallow(
+  //     <BrowserRouter>
+  //         <Button to='/'>Click</Button>
+  //     </BrowserRouter>,
+  //   );
+  //   console.log(btn.render());
+  // });
 
   it('renders with correct props', () => {
     const btn = shallow(<Button>Click me</Button>);

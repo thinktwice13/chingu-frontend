@@ -2,11 +2,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import themes from 'components/UI/styles/themes';
 import { colors, borders, effects } from '../styles/variables';
 
-const { node, oneOf, bool, string } = PropTypes;
+const { node, oneOf, oneOfType, bool, string, shape } = PropTypes;
 
 const disabledStyles = css`
   background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.light_grey)};
@@ -64,24 +65,28 @@ const invertTheme = theme => ({
 
 // ======= EXPORT ========= //
 const Button = props => {
-  const { children, theme, inverted, href, ...restProps } = props;
+  const { children, theme, inverted, href, to, replace, innerRef, ...restProps } = props;
 
   // Get color theme
   const t = inverted ? invertTheme(themes[theme]) : themes[theme];
 
-  // HTML tag to render
-  const htmlTag = href ? 'a' : 'button';
-
-  const anchorTagProps = !href
-    ? undefined
-    : {
-        href,
-        rel: 'noopener noreferrer',
-        target: '_blank',
-      };
+  // If href or path props provided, will render as anchor tag or React Rotuer Link
+  let componentProps;
+  if (href) {
+    componentProps = {
+      href,
+      rel: 'noopener noreferrer',
+      target: '_blank',
+      as: 'a',
+    };
+  } else if (to) {
+    componentProps = { to, replace, innerRef, as: Link };
+  } else {
+    componentProps = { as: 'button' };
+  }
 
   return (
-    <StyledButton theme={t} {...anchorTagProps} as={htmlTag} {...restProps}>
+    <StyledButton theme={t} {...componentProps} {...restProps}>
       {children}
     </StyledButton>
   );
@@ -96,6 +101,12 @@ Button.propTypes = {
   inverted: bool,
   disabled: bool,
   href: string,
+  to: oneOfType([
+    string,
+    shape({
+      pathname: string,
+    }),
+  ]),
 };
 
 Button.defaultProps = {
@@ -106,6 +117,7 @@ Button.defaultProps = {
   inverted: undefined,
   disabled: undefined,
   href: undefined,
+  to: undefined,
 };
 
 export default Button;
