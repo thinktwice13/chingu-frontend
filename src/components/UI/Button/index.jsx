@@ -8,7 +8,7 @@ import themes from 'components/UI/styles/themes';
 import { colors, borders, effects } from 'components/UI/styles/variables';
 import media from 'components/UI/styles/mediaSizes';
 
-const { node, oneOf, oneOfType, bool, string, shape } = PropTypes;
+const { node, oneOf, oneOfType, bool, string, shape, func, object } = PropTypes;
 
 const disabledStyles = css`
   background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.light_grey)};
@@ -70,14 +70,16 @@ const invertTheme = theme => ({
 
 // ======= EXPORT ========= //
 const Button = props => {
-  const { children, theme, inverted, href, to, replace, innerRef, ...restProps } = props;
+  const { children, component, theme, inverted, href, to, replace, innerRef, ...restProps } = props;
 
   // Get color theme
   const t = inverted ? invertTheme(themes[theme]) : themes[theme];
 
   // If href or path props provided, will render as anchor tag or React Rotuer Link
   let componentProps;
-  if (href) {
+  if (component) {
+    componentProps = { as: component };
+  } else if (href) {
     componentProps = {
       href,
       rel: 'noopener noreferrer',
@@ -102,27 +104,29 @@ Button.propTypes = {
   type: oneOf(['button', 'submit', 'reset']),
   size: oneOf(['small', 'regular', 'large']),
   theme: oneOf(['primary', 'secondary', 'info', 'error', 'warning']),
-  rounded: bool,
-  inverted: bool,
-  disabled: bool,
-  href: string,
+  component: oneOfType([string, func, object]), // TODO: Require className
   to: oneOfType([
     string,
     shape({
       pathname: string,
     }),
   ]),
+  href: string,
+  rounded: bool,
+  inverted: bool,
+  disabled: bool,
 };
 
 Button.defaultProps = {
   type: 'button',
   size: 'regular',
   theme: 'primary',
+  component: undefined,
+  to: undefined,
+  href: undefined,
   rounded: undefined,
   inverted: undefined,
   disabled: undefined,
-  href: undefined,
-  to: undefined,
 };
 
 export default Button;

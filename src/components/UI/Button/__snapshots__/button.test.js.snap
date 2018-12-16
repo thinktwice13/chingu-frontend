@@ -1,5 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button renders as anchor tag link with href prop 1`] = `
+<styled.div
+  as="a"
+  href="#"
+  rel="noopener noreferrer"
+  size="regular"
+  target="_blank"
+  theme={
+    Object {
+      "bg": "#15cf89",
+      "fg": "white",
+      "hover": "rgb(25, 194, 129)",
+    }
+  }
+  type="button"
+>
+  Click
+</styled.div>
+`;
+
+exports[`Button renders as button by default 1`] = `
+<styled.div
+  as="button"
+  size="regular"
+  theme={
+    Object {
+      "bg": "#15cf89",
+      "fg": "white",
+      "hover": "rgb(25, 194, 129)",
+    }
+  }
+  type="button"
+>
+  Click
+</styled.div>
+`;
+
+exports[`Button renders custom component if proviuded as prop 1`] = `
+<styled.div
+  as={[Function]}
+  size="regular"
+  theme={
+    Object {
+      "bg": "#15cf89",
+      "fg": "white",
+      "hover": "rgb(25, 194, 129)",
+    }
+  }
+  type="button"
+>
+  Click
+</styled.div>
+`;
+
 exports[`Button renders with correct props 1`] = `
 <styled.div
   as="button"

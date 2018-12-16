@@ -12,22 +12,9 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Button', () => {
   it('renders as button by default', () => {
     const btn = shallow(<Button>Click</Button>);
+    expect(btn).toMatchSnapshot();
     expect(btn.render()[0].name).toEqual('button');
   });
-
-  it('renders as anchor tag link with href prop', () => {
-    const btn = shallow(<Button href='#'>Click</Button>);
-    expect(btn.render()[0].name).toEqual('a');
-  });
-
-  // it('renders as React-router Link if provided "to" prop', () => {
-  //   const btn = shallow(
-  //     <BrowserRouter>
-  //         <Button to='/'>Click</Button>
-  //     </BrowserRouter>,
-  //   );
-  //   console.log(btn.render());
-  // });
 
   it('renders with correct props', () => {
     const btn = shallow(<Button>Click me</Button>);
@@ -104,4 +91,31 @@ describe('Button', () => {
     btn.prop('onClick')();
     expect(onClick).toBeCalledTimes(2);
   });
+
+  it('renders as anchor tag link with href prop', () => {
+    const btn = shallow(<Button href='#'>Click</Button>);
+    expect(btn).toMatchSnapshot();
+    expect(btn.render()[0].name).toEqual('a');
+  });
+
+  it('renders custom component if proviuded as prop', () => {
+    const btn = shallow(
+      <Button component={() => <img className='myClassName' alt='' />}>Click</Button>,
+    );
+
+    const rendered = btn.render()[0];
+
+    expect(btn).toMatchSnapshot();
+    expect(rendered.name).toEqual('img');
+    expect(rendered.attribs.class).toEqual('myClassName');
+  });
+
+  // it('renders as React-router Link if provided "to" prop', () => {
+  //   const btn = shallow(
+  //     <BrowserRouter>
+  //         <Button to='/'>Click</Button>
+  //     </BrowserRouter>,
+  //   );
+  //   console.log(btn.render());
+  // });
 });
