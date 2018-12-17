@@ -2,12 +2,13 @@ import React from 'react';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-styled-components';
-import { colors, borders } from 'components/UI/styles/variables';
+import variables from 'components/UI/styles/variables';
 import media from 'components/UI/styles/mediaSizes';
 import themes from 'components/UI/styles/themes';
 import Button from '.';
 
 Enzyme.configure({ adapter: new Adapter() });
+const { colors } = variables;
 
 describe('Button', () => {
   it('renders as button by default', () => {
@@ -42,10 +43,10 @@ describe('Button', () => {
   it('renders with correct styles', () => {
     const btn = mount(<Button>CLick me</Button>);
 
-    expect(btn).not.toHaveStyleRule('border-radius', borders.button_border_radius_rounded);
+    expect(btn).toHaveStyleRule('border-radius', '5px');
 
     btn.setProps({ rounded: true });
-    expect(btn).toHaveStyleRule('border-radius', borders.button_border_radius_rounded);
+    expect(btn).toHaveStyleRule('border-radius', '20px');
 
     btn.setProps({ disabled: true });
     expect(btn).toHaveStyleRule('background-color', colors.light_grey);

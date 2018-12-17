@@ -1,4 +1,4 @@
-export const colors = {
+const colors = {
   theme_purple: '#080a38',
   theme_purple__hover: 'rgb(7, 8, 44)',
   light_purple: '#71739b',
@@ -49,11 +49,15 @@ export const colors = {
   badge_3__hover: 'rgb(236, 172, 75)',
 };
 
-export const borders = {
+const borders = {
   button_border_radius: '5px',
   button_border_radius_rounded: '20px',
 };
 
-export const effects = {
+const effects = {
   box_shadow: `0px 3px 6px ${colors.light_grey}`,
 };
+
+export default {
+  colors, borders, effects
+}

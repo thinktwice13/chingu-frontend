@@ -5,16 +5,9 @@ exports[`Button renders as anchor tag link with href prop 1`] = `
   as="a"
   href="#"
   rel="noopener noreferrer"
-  size="regular"
+  size="default"
   target="_blank"
-  theme={
-    Object {
-      "bg": "#15cf89",
-      "borderStyle": "#15cf89",
-      "fg": "white",
-      "hover": "rgb(25, 194, 129)",
-    }
-  }
+  theme="default"
   type="button"
 >
   Click
@@ -24,15 +17,8 @@ exports[`Button renders as anchor tag link with href prop 1`] = `
 exports[`Button renders as button by default 1`] = `
 <styled.div
   as="button"
-  size="regular"
-  theme={
-    Object {
-      "bg": "#15cf89",
-      "borderStyle": "#15cf89",
-      "fg": "white",
-      "hover": "rgb(25, 194, 129)",
-    }
-  }
+  size="default"
+  theme="default"
   type="button"
 >
   Click
@@ -42,15 +28,8 @@ exports[`Button renders as button by default 1`] = `
 exports[`Button renders custom component if proviuded as prop 1`] = `
 <styled.div
   as={[Function]}
-  size="regular"
-  theme={
-    Object {
-      "bg": "#15cf89",
-      "borderStyle": "#15cf89",
-      "fg": "white",
-      "hover": "rgb(25, 194, 129)",
-    }
-  }
+  size="default"
+  theme="default"
   type="button"
 >
   Click
@@ -60,15 +39,8 @@ exports[`Button renders custom component if proviuded as prop 1`] = `
 exports[`Button renders with correct props 1`] = `
 <styled.div
   as="button"
-  size="regular"
-  theme={
-    Object {
-      "bg": "#15cf89",
-      "borderStyle": "#15cf89",
-      "fg": "white",
-      "hover": "rgb(25, 194, 129)",
-    }
-  }
+  size="default"
+  theme="default"
   type="submit"
 >
   Click me
@@ -79,15 +51,8 @@ exports[`Button renders with correct props 2`] = `
 <styled.div
   as="button"
   rounded={true}
-  size="regular"
-  theme={
-    Object {
-      "bg": "#15cf89",
-      "borderStyle": "#15cf89",
-      "fg": "white",
-      "hover": "rgb(25, 194, 129)",
-    }
-  }
+  size="default"
+  theme="default"
   type="submit"
 >
   Click me
@@ -97,16 +62,10 @@ exports[`Button renders with correct props 2`] = `
 exports[`Button renders with correct props 3`] = `
 <styled.div
   as="button"
+  inverted={true}
   rounded={true}
-  size="regular"
-  theme={
-    Object {
-      "bg": "white",
-      "borderStyle": "#15cf89",
-      "fg": "#15cf89",
-      "hover": "#15cf8911",
-    }
-  }
+  size="default"
+  theme="default"
   type="submit"
 >
   Click me
@@ -116,16 +75,10 @@ exports[`Button renders with correct props 3`] = `
 exports[`Button renders with correct props 4`] = `
 <styled.div
   as="button"
+  inverted={true}
   rounded={true}
   size="small"
-  theme={
-    Object {
-      "bg": "white",
-      "borderStyle": "#15cf89",
-      "fg": "#15cf89",
-      "hover": "#15cf8911",
-    }
-  }
+  theme="default"
   type="submit"
 >
   Click me
@@ -135,16 +88,10 @@ exports[`Button renders with correct props 4`] = `
 exports[`Button renders with correct props 5`] = `
 <styled.div
   as="button"
+  inverted={true}
   rounded={true}
   size="large"
-  theme={
-    Object {
-      "bg": "white",
-      "borderStyle": "#15cf89",
-      "fg": "#15cf89",
-      "hover": "#15cf8911",
-    }
-  }
+  theme="default"
   type="submit"
 >
   Click me
@@ -155,16 +102,10 @@ exports[`Button renders with correct props 6`] = `
 <styled.div
   as="button"
   disabled={true}
+  inverted={true}
   rounded={true}
   size="large"
-  theme={
-    Object {
-      "bg": "white",
-      "borderStyle": "#15cf89",
-      "fg": "#15cf89",
-      "hover": "#15cf8911",
-    }
-  }
+  theme="default"
   type="submit"
 >
   Click me

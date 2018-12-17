@@ -3,80 +3,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
-import themes from 'components/UI/styles/themes';
-import { colors, borders, effects } from 'components/UI/styles/variables';
+import styled from 'styled-components';
+import variables from 'components/UI/styles/variables';
 import media from 'components/UI/styles/mediaSizes';
+import { getColors, getSize } from 'components/UI/Button/styles';
 
 const { node, oneOf, oneOfType, bool, string, shape, func, object } = PropTypes;
 
-const disabledStyles = css`
-  background-color: ${colors.light_grey};
-  border: 1px solid ${colors.light_grey};
-  :hover {
-    background-color: ${({ inverted }) => (inverted ? '#00000011' : colors.light_grey)};
-  }
-`;
-
-const getSize = {
-  regular: css`
-    font-size: 14px;
-    min-width: 150px;
-  `,
-  small: css`
-    font-size: 10px;
-    min-width: 80px;
-  `,
-  large: css`
-    font-size: 18px;
-    min-width: 200px;
-  `,
-};
-
 const StyledButton = styled.div`
-  ${props => getSize[props.size]}
-  color: ${({ theme }) => theme.fg};
-  background-color: ${({ theme }) => theme.bg};
   text-transform: uppercase;
-  border-radius: ${({ rounded }) =>
-    rounded ? borders.button_border_radius_rounded : borders.button_border_radius};
+  border-radius: ${({ rounded }) => (rounded ? '20px' : '5px')};
   letter-spacing: 0.1em;
   text-align: center;
   border-width: 2px;
   border-style: solid;
-  border-color: ${props => props.theme.borderStyle};
   display: block;
-  box-shadow: ${effects.box_shadow};
+  box-shadow: ${variables.effects.box_shadow};
   margin: 0.5em;
   height: 3em;
-  :hover {
-    background-color: ${({ theme }) => theme.hover};
-  }
-  ${({ disabled }) => (disabled ? disabledStyles : '')}
+  
+  ${getColors}
+  ${getSize}
 
   @media(max-width:${media.phone}px) {
     width: 100%;
   }
 `;
 
-/**
- * @description inverts color theme
- * @param {Object} theme
- * @returns {Object} inverted theme with hover color based on foreground with low opacity //TODO: adjust
- */
-const invertTheme = theme => ({
-  fg: theme.bg,
-  bg: theme.fg,
-  borderStyle: theme.bg,
-  hover: `${theme.bg}11`, // Adds opacity (Assumes hex color code) TODO: FIXME
-});
-
 // ======= EXPORT ========= //
 const Button = props => {
-  const { children, component, theme, inverted, href, to, replace, innerRef, ...restProps } = props;
-
-  // Get color theme
-  const t = inverted ? invertTheme(themes[theme]) : themes[theme];
+  const { children, component, href, to, replace, innerRef, ...restProps } = props;
 
   // If href or path props provided, will render as anchor tag or React Rotuer Link
   let componentProps;
@@ -96,7 +52,7 @@ const Button = props => {
   }
 
   return (
-    <StyledButton theme={t} {...componentProps} {...restProps}>
+    <StyledButton {...componentProps} {...restProps}>
       {children}
     </StyledButton>
   );
@@ -105,8 +61,8 @@ const Button = props => {
 Button.propTypes = {
   children: node.isRequired,
   type: oneOf(['button', 'submit', 'reset']),
-  size: oneOf(['small', 'regular', 'large']),
-  theme: oneOf(['primary', 'secondary', 'info', 'error', 'warning']),
+  size: oneOf(['small', 'default', 'large']),
+  theme: oneOf(['default', 'info', 'error', 'warning']),
   component: oneOfType([string, func, object]), // TODO: Require className
   to: oneOfType([
     string,
@@ -122,8 +78,8 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button',
-  size: 'regular',
-  theme: 'primary',
+  size: 'default',
+  theme: 'default',
   component: undefined,
   to: undefined,
   href: undefined,
