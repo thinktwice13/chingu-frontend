@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import Test from 'views/Test'
 import Footer from './components/Footer/Footer';
 import Landing from './components/Landing';
 import Staff from './components/Pages/Staff';
@@ -24,10 +25,12 @@ import ProjectShowcase from './components/ProjectShowcase';
 import Ticketbox from './components/Ticketbox';
 // import HelpPage from "./components/HelpPage" TODO: uncomment when ready
 
+
 export default () => (
   <div className='App'>
     <Header />
     <Switch>
+      <Route path='/test' component={Test} />
       <Route exact path='/' component={Landing} />
       <Route exact path='/login' component={Login} />
       <Private
